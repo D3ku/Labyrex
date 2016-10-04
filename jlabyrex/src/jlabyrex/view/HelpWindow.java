@@ -6,6 +6,7 @@
 package jlabyrex.view;
 
 import javax.swing.*;
+import javax.swing.JButton;
 
 import jlabyrex.controller.ControllerForView;
 
@@ -17,10 +18,10 @@ public class HelpWindow extends JFrame {
     
     
     public HelpWindow() {
-        JFrame help;
-        help = new JFrame("How to Play");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    
+        super("How to Play");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);              // la variabile deve essere DO_NOTHING_ON_CLOSE
+        this.setVisible(true);
+        
         
     this.pack();
     }

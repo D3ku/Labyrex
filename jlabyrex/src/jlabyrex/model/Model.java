@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jlabyrex.view;
+package jlabyrex.model;
 
-import javax.swing.JFrame;
-
-
-public class MainGUI extends JFrame{
+/**
+ *
+ * @author Utente
+ */
+public class Model implements IModel {
     
 }

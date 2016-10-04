@@ -22,11 +22,24 @@ public class ControllerForView implements IControllerForView{
     public void openStartWindow(){
         View.getInstance().openStartWindow();
     }
+    
     public void closeStartWindow() {
         View.getInstance().closeStartWindow(); 
     }
+    
     public void openHelpWindow() {
         View.getInstance().openHelpWindow();
     }
     
+    public void closeHelpWindow() {
+        View.getInstance().closeHelpWindow(); 
+    }
+    
+    public void openLevelWindow() {
+        View.getInstance().openLevelWindow();
+    }
+    
+    public void closeLevelWindow() {
+        View.getInstance().closeLevelWindow();
+    }
 }

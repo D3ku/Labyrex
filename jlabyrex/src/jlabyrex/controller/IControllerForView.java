@@ -16,5 +16,11 @@ public interface IControllerForView {
     public void closeStartWindow();
 
     public void openHelpWindow();
+    
+    public void closeHelpWindow();
+    
+    public void openLevelWindow();
+    
+    public void closeLevelWindow();
 
 }

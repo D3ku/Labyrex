@@ -29,7 +29,12 @@ public class StartWindow extends JFrame {
             super("JLabyrex");                                
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
         
-            this.start=new JButton("Start");                                        //da complet.
+            this.start=new JButton("Start");
+            this.start.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent e) {
+                    handleLevelWindowEvent();
+                }
+            });
         
             this.tutorial=new JButton("How to play");                               //finestra da creare
             this.tutorial.addActionListener(new ActionListener(){                   //azione aggiunta sul bottone tutorial
@@ -79,11 +84,17 @@ public class StartWindow extends JFrame {
 
     }
     
-                                                  //gestisci operazioni pulsanti
-        private void handleHelpWindowEvent(){                                             //collegamento con la HelpWindow
-            ControllerForView.getInstance().closeStartWindow();
-            ControllerForView.getInstance().openHelpWindow();
-        }
+                                                    //gestisci operazioni pulsanti
+    private void handleHelpWindowEvent(){           //collegamento con la HelpWindow
+        
+        ControllerForView.getInstance().closeStartWindow();
+        ControllerForView.getInstance().openHelpWindow();
+    }
+    
+    private void handleLevelWindowEvent(){
+        ControllerForView.getInstance().closeStartWindow();
+        ControllerForView.getInstance().openLevelWindow();
+    }
     
     
 }

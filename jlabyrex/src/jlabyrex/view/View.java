@@ -65,9 +65,9 @@ public class View implements IView {
     public void openHelpWindow(){
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				if (startwindow == null)
-					startwindow = new StartWindow();
-				startwindow.setVisible(true);
+				if (helpwindow == null)
+					helpwindow = new HelpWindow();
+				helpwindow.setVisible(true);
 			}
 		});
     }
@@ -76,9 +76,22 @@ public class View implements IView {
     }
     
     public void openLevelWindow(){
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+		public void run() {
+                        if (levelwindow == null)
+				levelwindow = new LevelWindow();
+			levelwindow.setVisible(true);
+			}
+		});
     }
     
     public void closeLevelWindow(){
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+		public void run() {
+			if (levelwindow != null)
+				levelwindow.setVisible(false);
+			}
+		});
     };
     
 }
