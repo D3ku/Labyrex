@@ -62,7 +62,8 @@ public class LevelWindow extends JFrame {
                 }
             });
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        this.setResizable(false);
         
         //layout
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,4 +176,8 @@ public class LevelWindow extends JFrame {
         ControllerForView.getInstance().openStartWindow();
     }
     
+    private void handleMainGUIEvent(){
+        ControllerForView.getInstance().closeLevelWindow();
+        
+    }
 }

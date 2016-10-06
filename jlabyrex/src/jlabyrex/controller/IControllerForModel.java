@@ -3,17 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jlabyrex.model;
+package jlabyrex.controller;
 
 /**
  *
  * @author Utente
  */
-public interface IModel {
+public interface IControllerForModel {
     
-    public int[][] getLevel(int i);
+    //metodi classe Level
+    //public int[][] getLevel(int i);
     
     public int getNumberOfMirror();
     
     public int getNumberOfLaser();
+    
 }

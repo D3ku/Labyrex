@@ -9,7 +9,6 @@ public class ControllerForView implements IControllerForView{
     private static ControllerForView instance=null;
     
     //public static method
-    //--------------------------------------------------------------------------
     public static IControllerForView getInstance() {
 		if (instance == null)
 			instance = new ControllerForView();
@@ -17,7 +16,6 @@ public class ControllerForView implements IControllerForView{
 	}
     
     //pubblic instance methods
-    //--------------------------------------------------------------------------
    
     public void openStartWindow(){
         View.getInstance().openStartWindow();
@@ -41,5 +39,13 @@ public class ControllerForView implements IControllerForView{
     
     public void closeLevelWindow() {
         View.getInstance().closeLevelWindow();
+    }
+    
+    public void openMainGUI(){
+        View.getInstance().openMainGUI();
+    }
+    
+    public void closeMainGUI(){
+        View.getInstance().closeMainGUI();
     }
 }

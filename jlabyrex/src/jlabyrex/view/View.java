@@ -11,11 +11,9 @@ package jlabyrex.view;
  */
 public class View implements IView {
     //static var
-    //--------------------------------------------------------------------------
     public static View instance =null;
     
     //static method
-    //--------------------------------------------------------------------------
     public static IView getInstance(){
         if(instance==null)
             instance=new View();
@@ -23,14 +21,12 @@ public class View implements IView {
     }
     
     //instance attribute
-    //--------------------------------------------------------------------------
     protected StartWindow startwindow=null;
     protected HelpWindow helpwindow=null;
     protected LevelWindow levelwindow=null;
     protected MainGUI mainGUI=null;
     
     //instance method
-    //--------------------------------------------------------------------------
     public void openStartWindow(){
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
 		public void run() {
@@ -51,9 +47,22 @@ public class View implements IView {
     }
     
     public void openMainGUI(){
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+		public void run() {
+                        if (mainGUI == null)
+				mainGUI = new MainGUI();
+			mainGUI.setVisible(true);
+			}
+		});
     }
     
     public void closeMainGUI(){
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+		public void run() {
+			if (mainGUI != null)
+				mainGUI.setVisible(false);
+			}
+		});
     }
     
     public void updateMirrorLabel(){

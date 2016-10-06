@@ -10,4 +10,11 @@ import javax.swing.JFrame;
 
 public class MainGUI extends JFrame{
     
+    public MainGUI(){
+        
+        super();
+        this.setSize(640, 480);
+        this.setResizable(false);
+        this.setVisible(true);
+    }
 }
