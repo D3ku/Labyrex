@@ -68,15 +68,14 @@ public class StartWindow extends JFrame {
 				.addComponent(tutorial))
 		);
 
-		layout.setVerticalGroup(
-			layout.createSequentialGroup()
+            layout.setVerticalGroup(
+		layout.createSequentialGroup()
 			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-				.addComponent(title)
-				.addComponent(music))
+                            .addComponent(title)
+                            .addComponent(music))
 			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 				.addComponent(start)
-				.addComponent(tutorial
-                                  ))
+				.addComponent(tutorial))
 		);
         
         
