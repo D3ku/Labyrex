@@ -26,5 +26,7 @@ public interface IControllerForView {
     public void openMainGUI();
     
     public void closeMainGUI();
+    
+    public void updateLevelLabel();
 
 }

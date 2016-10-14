@@ -48,4 +48,8 @@ public class ControllerForView implements IControllerForView{
     public void closeMainGUI(){
         View.getInstance().closeMainGUI();
     }
+    
+    public void updateLevelLabel(){
+        View.getInstance().updateLevelLabel();
+    }
 }

@@ -2,18 +2,28 @@
 package jlabyrex.view;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
+import javax.swing.LayoutStyle;
+
+
+import jlabyrex.controller.ControllerForView;
 
 
 public class MainGUI extends JFrame {
     
-    private JPanel gamepanel;
+    private static GamePanel gamepanel=null;
     private JPanel optionpaneldx;
     private JPanel optionpanelsx;
+    
     private JButton menù;
     private JButton effects;
     private JButton reset;
@@ -21,17 +31,36 @@ public class MainGUI extends JFrame {
     private JButton lock;
     private JButton key;
     private JButton save;
+    
     private JLabel level;
     private JLabel connection;
+    private JLabel Mirror;
+    private JLabel num_conn;
+    private JLabel num_mirr;
+    
+    protected static int lvl;         //aggiorna label
+    protected static String diff;        //del livello
     
     public MainGUI() {
-   
-        gamepanel = new JPanel();
+        gamepanel=new GamePanel();
         optionpanelsx = new JPanel();
         optionpaneldx = new JPanel();
         
+        level = new JLabel();
+        level.setText(diff+" "+lvl);
+        level.setFont(new Font("Tahoma", 1, 24)); 
+        
+        connection = new JLabel();
+        connection.setFont(new Font("Tahoma", 1, 20));
+        connection.setText("Connessioni");
+        
         menù = new JButton();
         menù.setText("Menù");
+        menù.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent e) {
+                    handleLevelWindowEvent();
+                }
+            });
         
         effects = new JButton();
         effects.setText("Effetti");
@@ -51,135 +80,124 @@ public class MainGUI extends JFrame {
         save = new JButton();
         save.setText("Save");
            
-        connection = new javax.swing.JLabel();
-        level = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout gamepanelLayout = new javax.swing.GroupLayout(gamepanel);
+        
+        GroupLayout gamepanelLayout = new GroupLayout(gamepanel);
         gamepanel.setLayout(gamepanelLayout);
         gamepanelLayout.setHorizontalGroup(
-            gamepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            gamepanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGap(0, 480, Short.MAX_VALUE)
         );
         gamepanelLayout.setVerticalGroup(
-            gamepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            gamepanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGap(0, 480, Short.MAX_VALUE)
         );
 
         
-
-        
-
-        
-
-        javax.swing.GroupLayout optionpaneldxLayout = new javax.swing.GroupLayout(optionpaneldx);
+        GroupLayout optionpaneldxLayout = new GroupLayout(optionpaneldx);
         optionpaneldx.setLayout(optionpaneldxLayout);
         optionpaneldxLayout.setHorizontalGroup(
-            optionpaneldxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            optionpaneldxLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(optionpaneldxLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(optionpaneldxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lock, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(key, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(optionpaneldxLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(lock, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(key, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(save, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         optionpaneldxLayout.setVerticalGroup(
-            optionpaneldxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            optionpaneldxLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(optionpaneldxLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(lock, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lock, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
-                .addComponent(key, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(key, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
-                .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(save, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
         optionpanelsx.setName(""); // NOI18N
 
         
-
-        
-
-        
-
-        
-
-        javax.swing.GroupLayout optionpanelsxLayout = new javax.swing.GroupLayout(optionpanelsx);
+        GroupLayout optionpanelsxLayout = new GroupLayout(optionpanelsx);
         optionpanelsx.setLayout(optionpanelsxLayout);
         optionpanelsxLayout.setHorizontalGroup(
-            optionpanelsxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            optionpanelsxLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(optionpanelsxLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(optionpanelsxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(music, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(effects, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menù, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(optionpanelsxLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                    .addComponent(music, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(reset, GroupLayout.PREFERRED_SIZE, 70,GroupLayout.PREFERRED_SIZE)
+                    .addComponent(effects, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menù, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         optionpanelsxLayout.setVerticalGroup(
-            optionpanelsxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            optionpanelsxLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(optionpanelsxLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(menù, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menù, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
-                .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(effects, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(reset, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(effects, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
-                .addComponent(music, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(music, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
 
-        connection.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        connection.setText("Connessioni");
-
-        level.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        level.setText("Difficile");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(2, 2, 2)
-                .addComponent(optionpanelsx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(optionpanelsx, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
-                .addComponent(gamepanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(optionpaneldx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(gamepanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(optionpaneldx, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(level)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(connection))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(connection)
                     .addComponent(level))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(optionpaneldx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(optionpaneldx,GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addGap(133, 133, 133))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addComponent(gamepanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(gamepanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(125, 125, 125)
-                        .addComponent(optionpanelsx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(optionpanelsx, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
-        this.gamepanel.setBackground(Color.red);
+       // this.gamepanel.setBackground(Color.red);
+        
+        this.setResizable(false);
         pack();
         this.setSize(720,560);
         //ImageIcon background= new ImageIcon("sfondo.jpg");
         //this.setBackground(background);
-     }               
+        }               
+    
+        private void handleLevelWindowEvent(){
+            ControllerForView.getInstance().closeMainGUI();
+            ControllerForView.getInstance().openLevelWindow();
+        }
+    
     }

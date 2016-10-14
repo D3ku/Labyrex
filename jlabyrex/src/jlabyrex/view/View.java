@@ -71,6 +71,11 @@ public class View implements IView {
     public void updateConnectionLabel(){
     }
     
+    public void updateLevelLabel(){
+       mainGUI.lvl=levelwindow.choosed_lvl;
+       mainGUI.diff=levelwindow.choosed_diff;
+    }
+    
     public void openHelpWindow(){
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -82,6 +87,12 @@ public class View implements IView {
     }
     
     public void closeHelpWindow(){
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+		public void run() {
+			if (helpwindow != null)
+				helpwindow.setVisible(false);
+			}
+		});
     }
     
     public void openLevelWindow(){

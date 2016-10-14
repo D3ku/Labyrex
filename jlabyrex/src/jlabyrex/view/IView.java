@@ -23,6 +23,8 @@ public interface IView {
     
     public void updateConnectionLabel();
     
+    public void updateLevelLabel();
+    
     public void openHelpWindow();
     
     public void closeHelpWindow();
