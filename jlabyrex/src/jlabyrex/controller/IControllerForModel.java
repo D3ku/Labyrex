@@ -12,10 +12,12 @@ package jlabyrex.controller;
 public interface IControllerForModel {
     
     //metodi classe Level
-    //public int[][] getLevel(int i);
+    public int[][] getLevel();
     
     public int getNumberOfMirror();
     
     public int getNumberOfLaser();
+    
+    public void updateLevel();
     
 }

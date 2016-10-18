@@ -301,7 +301,6 @@ public class LevelWindow extends JFrame {
     
     private void handleMainGUIEvent(){
         ControllerForView.getInstance().closeLevelWindow();
-        ControllerForView.getInstance().updateLevelLabel();
         ControllerForView.getInstance().openMainGUI();
         //aggiungi variabili per la selezione del livello
     }

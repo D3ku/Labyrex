@@ -23,8 +23,12 @@ public class ControllerForModel implements IControllerForModel {
     
     //public instance method
     
-    public int[][] getLevel(int i){
-        return Model.getInstance().getLevel(i);
+    public void updateLevel(){      //aggiorna il livello da caricare
+        Model.getInstance().updateLevel();
+    }
+    
+    public int[][] getLevel(){      //restituisce la matrice del livello
+        return Model.getInstance().getLevel();
     }
     
     public int getNumberOfMirror(){

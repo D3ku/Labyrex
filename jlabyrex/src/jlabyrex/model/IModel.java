@@ -11,9 +11,11 @@ package jlabyrex.model;
  */
 public interface IModel {
     
-    public int[][] getLevel(int i);
+    public int[][] getLevel();
     
     public int getNumberOfMirror();
     
     public int getNumberOfLaser();
+    
+    public void updateLevel();
 }

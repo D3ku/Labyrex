@@ -27,6 +27,8 @@ public interface IControllerForView {
     
     public void closeMainGUI();
     
-    public void updateLevelLabel();
+    public int updateLevel();
+    
+    public String updateDifficult();
 
 }

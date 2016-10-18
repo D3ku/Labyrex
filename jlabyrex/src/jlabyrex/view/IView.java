@@ -23,7 +23,9 @@ public interface IView {
     
     public void updateConnectionLabel();
     
-    public void updateLevelLabel();
+    public int updateLevel();
+    
+    public String updateDifficult();
     
     public void openHelpWindow();
     

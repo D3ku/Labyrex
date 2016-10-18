@@ -5,10 +5,11 @@
  */
 package jlabyrex.view;
 
-/**
- *
- * @author Utente
- */
+import jlabyrex.controller.ControllerForModel;
+import jlabyrex.controller.ControllerForView;
+import jlabyrex.model.Model;
+        
+        
 public class View implements IView {
     //static var
     public static View instance =null;
@@ -25,6 +26,7 @@ public class View implements IView {
     protected HelpWindow helpwindow=null;
     protected LevelWindow levelwindow=null;
     protected MainGUI mainGUI=null;
+    protected GamePanel gamepanel=null;
     
     //instance method
     public void openStartWindow(){
@@ -51,6 +53,8 @@ public class View implements IView {
 		public void run() {
                         if (mainGUI == null)
 				mainGUI = new MainGUI();
+                        ControllerForModel.getInstance().updateLevel();  //aggiorna il livello da caricare all'apertura dellla mainGUI
+                        mainGUI.updateLabel();                             //aggiorna il label (livello) della schermata 
 			mainGUI.setVisible(true);
 			}
 		});
@@ -71,9 +75,13 @@ public class View implements IView {
     public void updateConnectionLabel(){
     }
     
-    public void updateLevelLabel(){
-       mainGUI.lvl=levelwindow.choosed_lvl;
-       mainGUI.diff=levelwindow.choosed_diff;
+    public int updateLevel(){   
+       return levelwindow.choosed_lvl;
+    }
+    
+    public String updateDifficult(){
+       return levelwindow.choosed_diff;
+       
     }
     
     public void openHelpWindow(){
@@ -101,6 +109,7 @@ public class View implements IView {
                         if (levelwindow == null)
 				levelwindow = new LevelWindow();
 			levelwindow.setVisible(true);
+                        Model.level=null;                               //resetta il livello ogni volta che si accede alla lvlwindow
 			}
 		});
     }

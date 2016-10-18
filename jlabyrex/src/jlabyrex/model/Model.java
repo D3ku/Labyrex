@@ -5,13 +5,15 @@
  */
 package jlabyrex.model;
 
+import jlabyrex.controller.ControllerForView;
+
 /**
  *
  * @author Utente
  */
 public class Model implements IModel {
     //instance attribute
-    protected Level level=null;
+    public static Level level=null;
     
     //static var
     public static Model instance =null;
@@ -24,10 +26,8 @@ public class Model implements IModel {
     }
     
     //metodi dei livelli
-    public int[][] getLevel(int i){
-        if(level==null)
-            level=new Level(i);
-        return level.Level();
+    public int[][] getLevel(){
+        return level.getLevel();
     }
       
     public int getNumberOfMirror(){
@@ -38,4 +38,9 @@ public class Model implements IModel {
         return level.NumberOfLaser();
     }
     
+    public void updateLevel(){
+        if(level==null)                 //sempre verificata poiché level=null ogni volta che si accede alla lvlwindow
+            level=new Level(ControllerForView.getInstance().updateLevel(),ControllerForView.getInstance().updateDifficult());
+        
+    }
 }

@@ -49,7 +49,11 @@ public class ControllerForView implements IControllerForView{
         View.getInstance().closeMainGUI();
     }
     
-    public void updateLevelLabel(){
-        View.getInstance().updateLevelLabel();
+    public int updateLevel(){
+       return View.getInstance().updateLevel();
+    }
+    
+    public String updateDifficult(){
+       return View.getInstance().updateDifficult();
     }
 }
