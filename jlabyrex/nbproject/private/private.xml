@@ -5,10 +5,14 @@
         <group>
             <file>file:/D:/NonCancellare/Documents/GitHub/Labyrex/jlabyrex/src/jlabyrex/model/Level.java</file>
             <file>file:/D:/NonCancellare/Documents/GitHub/Labyrex/jlabyrex/src/jlabyrex/view/MainGUI.java</file>
+            <file>file:/D:/NonCancellare/Documents/GitHub/Labyrex/jlabyrex/src/jlabyrex/view/GamePanel.java</file>
             <file>file:/D:/NonCancellare/Documents/GitHub/Labyrex/jlabyrex/src/jlabyrex/view/View.java</file>
+            <file>file:/D:/NonCancellare/Documents/GitHub/Labyrex/jlabyrex/src/jlabyrex/controller/IControllerForModel.java</file>
             <file>file:/D:/NonCancellare/Documents/GitHub/Labyrex/jlabyrex/src/jlabyrex/model/Model.java</file>
             <file>file:/D:/NonCancellare/Documents/GitHub/Labyrex/jlabyrex/src/jlabyrex/view/LevelWindow.java</file>
+            <file>file:/D:/NonCancellare/Documents/GitHub/Labyrex/jlabyrex/src/jlabyrex/model/Mirror.java</file>
             <file>file:/D:/NonCancellare/Documents/GitHub/Labyrex/jlabyrex/src/jlabyrex/controller/ControllerForModel.java</file>
+            <file>file:/D:/NonCancellare/Documents/GitHub/Labyrex/jlabyrex/src/jlabyrex/controller/ControllerForView.java</file>
         </group>
     </open-files>
 </project-private>

@@ -214,10 +214,8 @@ public class Level {
          //i rappresenta il pulsante premuto sulla LevelWindow
          //level è una matrice che racchiude lo schema del livello selezionato
          
-        if((lvl==1)&&(diff=="Facile")){
+        if((lvl==1)&&(diff=="Facile"))
              level=easy_1; 
-             System.out.println("livello1");
-     }
         else if((lvl==2)&&(diff=="Facile"))
              level=easy_2;
         else if((lvl==3)&&(diff=="Facile"))
@@ -256,9 +254,8 @@ public class Level {
                 else if(level[k][j]>=7)
                     num_laser++;
                 
-            }
-        ;     
-        
+            }     
+        System.out.println("specchi:"+NumberOfMirror()+" laser:"+NumberOfLaser());
     }  
      
      public int NumberOfMirror(){

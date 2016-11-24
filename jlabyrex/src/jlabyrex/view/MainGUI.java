@@ -6,18 +6,25 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+//immagini
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.ImageObserver;
 
 import javax.swing.GroupLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 import javax.swing.LayoutStyle;
-
+//timer repaint
+import javax.swing.Timer;
 
 import jlabyrex.controller.ControllerForView;
+import jlabyrex.controller.ControllerForModel;
 
 
 public class MainGUI extends JFrame {
@@ -40,14 +47,14 @@ public class MainGUI extends JFrame {
     private JLabel num_conn;
     private JLabel num_mirr;
     
-    protected static int lvl;         //aggiorna label
+    protected static int lvl;            //aggiorna label
     protected static String diff;        //del livello
-    
+            
     public MainGUI() {        
-        
         gamepanel=new GamePanel();
         optionpanelsx = new JPanel();
         optionpaneldx = new JPanel();
+        CustomPanel back=new CustomPanel();
         
         level = new JLabel();
         
@@ -161,6 +168,7 @@ public class MainGUI extends JFrame {
 
         
         
+        
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -210,15 +218,15 @@ public class MainGUI extends JFrame {
                         .addComponent(optionpanelsx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
-       // this.gamepanel.setBackground(Color.red);
+        pack();
        
         
         this.setResizable(false);
-        pack();
         this.setSize(725,560);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        //ImageIcon background= new ImageIcon("sfondo.jpg");
-        //this.setBackground(background);
+        
+        
+        
         }               
     
     protected void updateLabel(){
@@ -228,8 +236,8 @@ public class MainGUI extends JFrame {
         level.setText(diff+" "+lvl);
         level.setFont(new Font("Tahoma", 1, 24));
         
-        num_mirr.setText("dfghjk");
-        num_conn.setText("dfghjk");
+        num_mirr.setText("XX"+"/"+ControllerForModel.getInstance().getNumberOfMirror());
+        num_conn.setText("KK"+"/"+ControllerForModel.getInstance().getNumberOfLaser());
         
 
     }    
@@ -240,4 +248,18 @@ public class MainGUI extends JFrame {
         ControllerForView.getInstance().openLevelWindow();
         }
     
+}
+
+class CustomPanel extends JPanel{//da fare
+
+    private Toolkit tk= Toolkit.getDefaultToolkit();
+    private Image imm=tk.getImage("Sfondo.jpg");
+    
+    
+    
+    public void paintComponent(Graphics g){
+        Graphics2D g2=(Graphics2D) g;
+        g2.drawImage(imm, 0, 0, 725, 560, null);
     }
+   
+}
